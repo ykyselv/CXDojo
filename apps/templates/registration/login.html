@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOG_IN</title>
+</head>
+<body>
+<p>Необходимо войти:</p>
+<form method="post" ,action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button>Log_in</button>
+</form>
+<a href="{% url 'main_page' %}">Вернуться на главную</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <title>Userlist</title>
+
+    {% for el in object_list %}
+        <p>Username: {{ el.username }} ---- First_name: {{ el.first_name }} - Last_name: {{ el.last_name }}</p>
+    {% endfor %}
+    {% url 'collect_data' as collect_data %}
+    <p><a href={{ collect_data }}>Начать сбор информации</a></p>
+
+
+    <div class="auth">
+        {% if user.is_authenticated %}
+            <div class="HI_user">Hi {{ user.username }}!</div>
+            <div><a href="{% url 'logout' %}">Log Out</a></div>
+        {% else %}
+            <div>
+                <a href="{% url 'login' %}">Log In</a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

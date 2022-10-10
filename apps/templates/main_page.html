@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <title>Главная страница</title>
+
+    <p>Добро пожаловать</p>
+    {% url 'collect_data' as collect_data %}
+    <p><a href={{ collect_data }}>Начать сбор информации</a></p>
+    {% url 'userlist' as userlist %}
+    <p><a href={{ userlist }}>Показать список пользователей</a></p>
+
+    <div class="auth">
+        {% if user.is_authenticated %}
+            <div class="HI_user">Hi {{ user.username }}!</div>
+            <div><a href="{% url 'logout' %}">Log Out</a></div>
+        {% else %}
+            <div>
+                <a href="{% url 'login' %}">Log In</a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+
+
+
